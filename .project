@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>morbidmetertest</name>
+	<name>morbidmetertest-android</name>
 	<comment></comment>
 	<projects>
 		<project>morbidmeter-android</project>
