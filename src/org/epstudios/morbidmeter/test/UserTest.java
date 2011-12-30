@@ -1,6 +1,7 @@
 package org.epstudios.morbidmeter.test;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import junit.framework.TestCase;
 
@@ -16,12 +17,8 @@ public class UserTest extends TestCase {
 		super.setUp();
 	}
 
-	public void testUser() {
-		User user = new User("default", Calendar.getInstance(), 80.0);
-	}
-
 	public void testDeathDay() {
-		Calendar bd = Calendar.getInstance();
+		GregorianCalendar bd = new GregorianCalendar();
 		bd.set(Calendar.YEAR, 1950);
 		bd.set(Calendar.MONTH, 1);
 		bd.set(Calendar.DAY_OF_MONTH, 1);
@@ -31,7 +28,7 @@ public class UserTest extends TestCase {
 	}
 
 	public void testPercentAlive() {
-		Calendar bd = Calendar.getInstance();
+		GregorianCalendar bd = new GregorianCalendar();
 		bd.set(Calendar.YEAR, 1950);
 		bd.set(Calendar.MONTH, 1);
 		bd.set(Calendar.DAY_OF_MONTH, 1);
@@ -45,7 +42,7 @@ public class UserTest extends TestCase {
 
 	public void testIsSane() {
 		double longevity = 80.1;
-		Calendar bd = Calendar.getInstance();
+		GregorianCalendar bd = new GregorianCalendar();
 		bd.set(Calendar.YEAR, 1950);
 		bd.set(Calendar.MONTH, 1);
 		bd.set(Calendar.DAY_OF_MONTH, 1);
@@ -53,7 +50,29 @@ public class UserTest extends TestCase {
 		assertEquals(true, user.isSane());
 		longevity = -1;
 		user = new User("", bd, longevity);
-		assertEquals(false, user.isSane());
+		assertFalse(user.isSane());
+		user.setLongevity(88);
+		assertTrue(user.isSane());
+		bd.set(Calendar.YEAR, 1799);
+		user.setBirthDay(bd);
+		assertFalse(user.isSane());
+		bd.set(Calendar.YEAR, 1801);
+		user.setBirthDay(bd);
+		assertTrue(user.isSane());
+		bd.set(Calendar.YEAR, 2110);
+		user.setBirthDay(bd);
+		assertFalse(user.isSane());
+		bd.set(Calendar.YEAR, 1999);
+		assertTrue(user.isSane());
+	}
+
+	public void testIsDead() {
+		Calendar bd = new GregorianCalendar(1950, Calendar.JANUARY, 1);
+		User user = new User("", bd, 60.0); // should die in 2010
+		assertTrue(user.isDead());
+		user.setLongevity(90.0); // should die in 2040, if MM still around this
+									// test will fail!
+		assertFalse(user.isDead());
 	}
 
 }
