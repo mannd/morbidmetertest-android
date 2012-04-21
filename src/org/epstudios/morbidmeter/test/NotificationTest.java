@@ -21,6 +21,8 @@ public class NotificationTest extends TestCase {
 		assert (MorbidMeter.isEvenMillion("5,000,011 years"));
 		assert (MorbidMeter.isEvenMillion("12,000,101,000,111 years"));
 		assert (!MorbidMeter.isEvenMillion("14,001,001,000 years"));
+		// test with carriage returns
+		assert (MorbidMeter.isEvenHour("Jan 4\n 2012\n 1:00:00 PM 333 msec"));
 	}
 
 	protected void setUp() throws Exception {
