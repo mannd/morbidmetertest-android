@@ -13,6 +13,7 @@ public class UserTest extends TestCase {
 		super(name);
 	}
 
+	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
 	}
@@ -75,4 +76,14 @@ public class UserTest extends TestCase {
 		assertFalse(user.isDead());
 	}
 
+	public void testGetApostophedName() {
+		Calendar bd = new GregorianCalendar(1950, Calendar.JANUARY, 1);
+		User user = new User("David", bd, 70.0);
+		assertEquals(user.getApostrophedName(), "David's");
+		User user1 = new User("Semis", bd, 70.0);
+		assertEquals(user1.getApostrophedName(), "Semis'");
+		User user2 = new User("DAVID", bd, 70.0);
+		assertEquals(user2.getApostrophedName(), "DAVID's");
+
+	}
 }
