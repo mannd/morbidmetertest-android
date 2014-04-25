@@ -2,7 +2,7 @@ package org.epstudios.morbidmeter.test;
 
 import junit.framework.TestCase;
 
-import org.epstudios.morbidmeter.MorbidMeterClock;
+import org.epstudios.morbidmeter.lib.MorbidMeterClock;
 
 public class NotificationTest extends TestCase {
 

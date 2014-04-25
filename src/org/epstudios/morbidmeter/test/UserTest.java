@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 import junit.framework.TestCase;
 
-import org.epstudios.morbidmeter.User;
+import org.epstudios.morbidmeter.lib.User;
 
 public class UserTest extends TestCase {
 
