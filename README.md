@@ -1,5 +1,6 @@
 ## Description
-Unit tests for the Android version of MorbidMeter.
+!! NOTE: DEVELOPMENT CLOSED IN THIS REPOSITORY
+morbidmetertest-android has been incorporated into the morbidmeter-android repository.  No further changes should be made to this repository.
 
 ## License
 Copyright 2011 [EP Studios, Inc.](http://www.epstudiossoftware.com)
